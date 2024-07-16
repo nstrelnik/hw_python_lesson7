@@ -10,7 +10,6 @@ def test_read_pdf():
         with zip_file.open('test-pdf.pdf') as file: #цикл на открытие файла в архиве
             reader = PdfReader(file)
             text_pdf = reader.pages[0].extract_text()
-            #print(text_pdf)
             assert "TESTING PDF FILE FOR DOWNLOAD" in text_pdf
 
 
@@ -20,7 +19,7 @@ def test_read_xlsx():
         with zip_file.open('file.xlsx') as file:
             workbook = load_workbook(file)
             sheet = workbook.active
-            assert sheet.cell(row=3, column=2).value == 'Mara'
+            assert sheet.cell(row=16, column=2).value == 'Kina'
 
 
 
