@@ -2,10 +2,8 @@ import os
 import shutil
 import pytest
 import zipfile
+from script_os import ZIP_PATH, TMP_PATH
 
-TMP_PATH = os.path.join(os.getcwd(), "tmp") #путь к папке с файлами
-ZIP_PATH = os.path.join(os.getcwd(), "zipped") #путь к папке с архивом
-ZIP_RESOURCES = os.path.join(os.getcwd(), "zipped", "zip_resources.zip") #путь к архиву
 
 @pytest.fixture(scope='function', autouse=True)
 def create_archive():
@@ -16,4 +14,6 @@ def create_archive():
             add_file = os.path.join(TMP_PATH, file) #склейка пути к файлам которые добавляются в архив
             zf.write(add_file, os.path.basename(add_file)) #добавление файлов в архив
 
+    yield
 
+    shutil.rmtree(ZIP_PATH)
