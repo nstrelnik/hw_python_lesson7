@@ -1,7 +1,7 @@
 import csv
 import zipfile
 from pypdf import PdfReader
-from conftest import ZIP_RESOURCES
+from script_os import ZIP_RESOURCES
 from openpyxl import load_workbook
 
 
